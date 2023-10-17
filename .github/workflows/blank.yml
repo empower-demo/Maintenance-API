@@ -33,7 +33,7 @@ jobs:
           # The API-key generated in the DCP Admin app as authentication for a certain DataMiner System, saved in a GitHub secret
           api-key: ${{secrets.DATAMINER_DEPLOY_KEY}}
           # The path to the .sln file of the solution. Atm only DataMiner Automation Script solutions are supported. E.g ./Example/AutomationScript.sln. Required for stages: All and Upload.
-          solution-path: Automationscript.sln
+          solution-path: Maintenance API.sln
           # The chosen name of the artifact. E.g. MyPackageName.  Required for stages: All, Upload and Deploy.
           artifact-name: empowerdemo
           # The version number for the artifact. Only required for a release run. Format A.B.C for a stable release or A.B.C-text for a pre-release. Required for stages Upload and All if no build number was provided instead.
