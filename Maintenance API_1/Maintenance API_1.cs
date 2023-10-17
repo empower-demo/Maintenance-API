@@ -17,11 +17,9 @@ namespace Maintenance_API_1
 		[AutomationEntryPoint(AutomationEntryPointType.Types.OnApiTrigger)]
 		public ApiTriggerOutput OnApiTrigger(IEngine engine, ApiTriggerInput requestData)
 		{
-			// In order to use this snippet, the 'Skyline.DataMiner.Dev.Automation' Nuget package needs to be installed with version >= 10.2.12
-			// Add custom code here
 			String message = "";
-            StatusCode statusCode = StatusCode.Ok;
-            if (requestData.RawBody.Equals("Start", StringComparison.InvariantCultureIgnoreCase))
+			StatusCode statusCode = StatusCode.Ok;
+			if (requestData.RawBody.Equals("Start", StringComparison.InvariantCultureIgnoreCase))
 			{
 				Start(engine);
 				message = "Maintenance Started.. Switched to Satellite !";
@@ -35,12 +33,13 @@ namespace Maintenance_API_1
 				message = "Invalid Input";
 				statusCode = StatusCode.BadRequest;
             }
-            return new ApiTriggerOutput
+			return new ApiTriggerOutput
 			{
 				ResponseBody = message,
 				ResponseCode = (int)statusCode,
 			};
 		}
+
 		public void Start(IEngine engine) {
 			var ec2 = engine.FindElement("localhost");
 			ec2.Mask("Started Maintenance !!");
@@ -48,7 +47,7 @@ namespace Maintenance_API_1
 
 		public void Stop(IEngine engine) {
             var ec2 = engine.FindElement("localhost");
-			ec2.Unmask();
+            ec2.Unmask();
         }
 	}
 }
